@@ -498,6 +498,8 @@ static void *getMcontextEip(ucontext_t *uc) {
     return (void*) uc->uc_mcontext->__ss.__rip;
     #elif defined(__i386__)
     return (void*) uc->uc_mcontext->__ss.__eip;
+    #elif defined(__arm64__) || defined(__aarch64__) /* ARM64 (M1/M2) */
+    return (void*) uc->uc_mcontext->__ss.__pc;
     #else
     return (void*) uc->uc_mcontext->__ss.__srr0;
     #endif
