@@ -8,4 +8,10 @@ default: all
 install:
 	cd src && $(MAKE) $@
 
+clean:
+	cd src && $(MAKE) clean
+
+debug:
+	cd src && &(MAKE) all CFLAGS="-g -00"
+
 .PHONY: install
